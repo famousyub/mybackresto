@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spring SSE Push Notifications</title>
+<script>
+	function initialize() {
+		const eventSource = new EventSource('http://localhost:8080/notification');
+		eventSource.onmessage = e => {
+			const msg = e.data;
+			document.getElementById("greet").innerHTML = msg;
+		};
+		eventSource.onopen = e => console.log('open');
+		eventSource.onerror = e => {
+			if (e.readyState == EventSource.CLOSED) {
+				console.log('close');
+			}
+			else {
+				console.log(e);
+			}
+		};
+		eventSource.addEventListener('second', function(e) {
+			console.log('second', e.data);
+		}, false);
+	}
+	window.onload = initialize;
+</script>
+</head>
+<body>
+	<div id="greet"></div>
+</body>
+</html>
+
+
+
+<!-- Etape 0.  Définir les objectifs du projet
+Etape 1. Découper le projet et définir la liste des tâches
+Etape 2. Définir l’enchaînement logique des tâches
+Etape 3- Ajouter les durées et des contraintes sur certaines tâches et intégrer des tâches externes
+Etape 4- Définir et attribuer les ressources
+Etape 5- Planifier et assurer le suivi du projet
+Bonus : Les principaux logiciels de gestion de projets
+Bonus : les conseils pour bien gérer un projet -->

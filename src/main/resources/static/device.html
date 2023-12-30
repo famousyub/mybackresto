@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>dEVICE </title>
+		
+		<script id='sap-ui-bootstrap' type='text/javascript'  
+        src='https://openui5.hana.ondemand.com/1.81.1/resources/sap-ui-core.js' 
+        data-sap-ui-libs='sap.ui.core'></script> 
+        
+        
+        <style>
+        body {
+    margin: 0;            /* Reset default margin */
+}
+iframe {
+    display: block;       /* iframes are inline by default */
+    background: #000;
+    border: none;         /* Reset default border */
+    height: 100vh;        /* Viewport-relative units */
+    width: 100vw;
+}
+        </style>
+	</head>
+	<body>
+	
+	<script>
+	
+	var myDate = new Date("2020-08-17T21:59:00Z");
+
+	console.log('before', myDate.toISOString());
+
+	console.log(
+	  new sap.ui.model.type.DateTime({
+	          relative: true,
+	          relativeScale: 'auto',
+	        }).formatValue(myDate, 'string')
+	);
+
+	console.log('after', myDate.toISOString());
+
+	console.log("FormatLocale", sap.ui.getCore().getConfiguration().getFormatLocale());
+	console.log("Timezone", Intl.DateTimeFormat().resolvedOptions().timeZone)
+
+	</script>
+	
+	  <section id="content"></section>
+		<iframe src="https://appetize.io/embed/azb2w0turfrvd1zjr8wx9jy3cc?device=nexus5&scale=75&orientation=portrait&osVersion=7.1"  width="100%" height="420"></iframe>
+	</body>
+</html>
